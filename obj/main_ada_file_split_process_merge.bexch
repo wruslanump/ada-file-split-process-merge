@@ -1,21 +1,29 @@
 [GENERATED OBJECT FILE]
 b__main_ada_file_split_process_merge.o
 [PROJECT FILES]
-/home/wruslan/github-ump/ada-file-split-process-merge/ada_file_split_process_merge.gpr
-20210312000539
+/home/wruslan/github/wruslanump/ada-file-split-process-merge/ada_file_split_process_merge.gpr
+20210317183949
 [BOUND OBJECT FILES]
-/home/wruslan/github-ump/ada-file-split-process-merge/obj/main_ada_file_split_process_merge.o
+/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/pkg_ada_datetime_stamp.o
+/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/pkg_ada_file_line_properties.o
+/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/pkg_ada_file_properties.o
+/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/pkg_ada_file_read_write.o
+/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/pkg_ada_realtime_delays.o
+/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/main_ada_file_split_process_merge.o
 [GENERATED SOURCE FILES]
 b__main_ada_file_split_process_merge.ads
 b__main_ada_file_split_process_merge.adb
 b__main_ada_file_split_process_merge.ali
 [RESULTING OPTIONS]
--L/home/wruslan/github-ump/ada-file-split-process-merge/obj/
--L/home/wruslan/github-ump/ada-file-split-process-merge/obj/
+-L/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/
+-L/home/wruslan/github/wruslanump/ada-file-split-process-merge/obj/
 -L/usr/lib/gcc/x86_64-linux-gnu/9/adalib/
 -shared
 -shared-libgcc
+-lgnarl-9
 -lgnat-9
+-lpthread
+-lrt
 -ldl
 [RUN PATH OPTION]
 /usr/lib/gcc/x86_64-linux-gnu/9/adalib/

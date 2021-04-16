@@ -41,7 +41,7 @@ is
                                
    function  get_execution_time_duration (startClock, finishClock : in AART.Time) 
                                return AART.Time_Span;
-   
+   procedure about_package;
 -- ======================================================== 
 end pkg_ada_realtime_delays;
 -- ========================================================

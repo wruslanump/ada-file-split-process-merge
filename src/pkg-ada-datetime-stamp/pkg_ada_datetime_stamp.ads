@@ -22,6 +22,7 @@ is
    function get_date_stamp (ClockNow : in AART.Time) return AASU.Unbounded_String; 
    function get_time_stamp (ClockNow : in AART.Time) return AASU.Unbounded_String;
  
+   procedure about_package;
 -- ======================================================== 
 end pkg_ada_datetime_stamp;
 -- ========================================================

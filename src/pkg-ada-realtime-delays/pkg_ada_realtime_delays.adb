@@ -7,6 +7,7 @@ with Ada.Text_IO;
 use  Ada.Text_IO;
 with Ada.Real_Time; 
 use  Ada.Real_Time;  
+with Ada.Strings.Unbounded;
 
 -- ========================================================
 package body pkg_ada_realtime_delays 
@@ -16,7 +17,9 @@ is
    -- RENAMING STANDARD PACKAGES FOR CONVENIENCE
    package ATIO   renames Ada.Text_IO;
    package ART    renames Ada.Real_Time;
-       
+   package ASU    renames Ada.Strings.Unbounded;
+  
+   
     -- ALL REQUIRED FOR INITIALIZATION ONLY
      sec_RTInterval  : ART.Time_Span  := ART.Seconds(1);
     msec_RTInterval  : ART.Time_Span  := ART.Milliseconds(1);
@@ -132,6 +135,35 @@ is
         ATIO.Put (Duration'Image (To_Duration (executionTime)));
         ATIO.Put_Line (" seconds.");
    end exec_display_execution_time; 
+   
+   -- =====================================================
+   procedure display_help_file is 
+   -- =====================================================
+      inp_fhandle : ATIO.File_Type; 
+      inp_fmode   : ATIO.File_Mode := ATIO.In_File;
+      inp_fname   : String := "src/pkg-ada-realtime-delays/pkg_ada_realtime_delays.hlp";
+      inp_UBlineStr : ASU.Unbounded_String;
+   
+   begin
+      ATIO.Open (inp_fhandle, inp_fmode, inp_fname); 
+      
+      -- Traverse file line by line and display line to screen
+      while not ATIO.End_Of_File (inp_fhandle) loop
+         inp_UBlineStr := ASU.To_Unbounded_String(ATIO.Get_Line (inp_fhandle));
+         ATIO.Put_Line (ATIO.Standard_Output, ASU.To_String (inp_UBlineStr)); 
+      end loop;   
+      
+      ATIO.Close(inp_fhandle);
+   end display_help_file;
+      
+   -- =====================================================
+   procedure about_package is 
+   -- =====================================================  
+   begin
+      -- Read from external text file and display      
+      display_help_file;
+      
+   end about_package; 
    
 -- ========================================================
 begin -- PACKAGE BEGIN

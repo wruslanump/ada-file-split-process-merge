@@ -21,18 +21,18 @@ package body pkg_ada_datetime_stamp
 -- ========================================================
 --   with SPARK_Mode => on
 is
-   -- RENAMING STANDARD PACKAGES FOR CONVENIENCE
+   -- RENAMING STANDARD ADA PACKAGES FOR CONVENIENCE
    package ATIO   renames Ada.Text_IO;
    package ACal   renames Ada.Calendar;
    package ACalF  renames Ada.Calendar.Formatting;
    package ART    renames Ada.Real_Time;
-
-   -- RENAMING ADA STRING PACKAGES
    package ASU    renames Ada.Strings.Unbounded;
-  
-    -- ====================================================
-    -- DEFINE GETTIME FUNCTION 
-    -- ====================================================
+
+   -- RENAMING USER_CREATED ADA PACKAGES
+       
+   -- ====================================================
+   -- DEFINE GETTIME FUNCTION 
+   -- ====================================================
     function GetTime (ClockNow : ART.Time) return String 
     is
 	     Seconds  : ART.Seconds_Count;
@@ -95,7 +95,36 @@ is
       timestring := (time_only & fraction_only); 
       return (timestring);
    end get_time_stamp; 
-    
+      
+   -- =====================================================
+   procedure display_help_file is 
+   -- =====================================================
+      inp_fhandle : ATIO.File_Type; 
+      inp_fmode   : ATIO.File_Mode := ATIO.In_File;
+      inp_fname   : String := "src/pkg-ada-datetime-stamp/pkg_ada_datetime_stamp.hlp";
+      inp_UBlineStr : ASU.Unbounded_String;
+   
+   begin
+      ATIO.Open (inp_fhandle, inp_fmode, inp_fname); 
+      
+      -- Traverse file line by line and display line to screen
+      while not ATIO.End_Of_File (inp_fhandle) loop
+         inp_UBlineStr := ASU.To_Unbounded_String(ATIO.Get_Line (inp_fhandle));
+         ATIO.Put_Line (ATIO.Standard_Output, ASU.To_String (inp_UBlineStr)); 
+      end loop;   
+      
+      ATIO.Close(inp_fhandle);
+   end display_help_file;
+   
+   -- =====================================================
+   procedure about_package is 
+   -- =====================================================  
+   begin
+      -- Read from external text file and display 
+      display_help_file;
+      
+   end about_package; 
+  
 -- ========================================================
 begin
     null;
